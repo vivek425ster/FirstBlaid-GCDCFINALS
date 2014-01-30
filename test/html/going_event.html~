@@ -1,0 +1,242 @@
+<html>
+<head>
+
+    <link rel="shortcut icon" href="http://www.clipartsfree.net/vector/small/blood_clipart_Clipart_Free.png">
+
+    <title>BloodConnect</title>
+
+	
+<script type="text/javascript" src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
+<link href="/css/bootstrap12.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    
+
+<script type="text/javascript" src="/js/jquery.js"></script>
+<script type="text/javascript" src="/js/bootstrap.js"></script>
+		
+	<script type="text/javascript" src="/js/cufon-yui.js"></script>
+	<script type="text/javascript" src="/js/font.font.js"></script>
+	<script type="text/javascript">Cufon.replace('.cufon, .nav, .slogan', {hover:true});</script>	
+    <script type="text/javascript">
+	
+      var CLIENT_ID = '269741158057.apps.googleusercontent.com';
+      var SCOPES = 'https://www.googleapis.com/auth/calendar';
+      /**
+       * Called when the client library is loaded to start the auth flow.
+       */
+      function handleClientLoad() {
+        window.setTimeout(checkAuth, 1);
+      }
+
+      /**
+       * Check if the current user has authorized the application.
+       */
+      
+      function checkAuth() {
+        gapi.auth.authorize(
+            {'client_id': '269741158057.apps.googleusercontent.com' , 'scope': SCOPES, 'immediate': true},
+            handleAuthResult);
+      }callback
+
+      /**
+       * Called when authorization server replies.
+       *
+       * @param {Object} authResult Authorization result.
+       */
+
+
+	
+
+      function handleAuthResult(authResult) {
+        var authButton = document.getElementById('authorizeButton');
+       // var filePicker = document.getElementById('filePicker');
+        authButton.style.display = 'none';
+       // filePicker.style.display = 'none';
+        if (authResult && !authResult.error) {
+          // Access token has been successfully retrieved, requests can be sent to the API.
+         // filePicker.style.display = 'block';
+document.getElementById("create_event").onclick = createStarterEvent;
+          //filePicker.onchange = uploadFile;
+        } else {
+          // No access token could be retrieved, show the button to start the authorization flow.
+          authButton.style.display = 'block';
+	  authButton.onclick = function() {
+              gapi.auth.authorize(
+                  {'client_id': '269741158057.apps.googleusercontent.com', 'scope': SCOPES, 'immediate': false},
+                  handleAuthResult);
+          };
+        }
+      }
+
+      /**
+       * Start the file upload.
+       *
+       * @param {Object} evt Arguments from the file selector.
+       */
+
+      function listStarterEvent() {
+	      gapi.client.load('calendar', 'v3', function() {
+			      listEvent();
+			      alert("Event has been added to the Google Calendar!");
+			      
+});
+				
+      }
+
+function createStarterEvent() {
+	      gapi.client.load('calendar', 'v3', function() {
+			      createEvent();
+			      alert("Event Create in Google Calendar.");
+			      
+});
+				
+      }
+
+
+function listEvent() {
+
+
+	var request = gapi.client.calendar.events.list({
+				         'calendarId': 'primary'
+					     });
+
+	request.execute(function(resp) {
+	      for (var i = 0; i < resp.items.length; i++) {
+	              var li = document.createElement('li');
+		              li.appendChild(document.createTextNode(resp.items[i].summary));
+			              document.getElementById('events').appendChild(li);
+				           }
+					        });
+        }
+function createEvent()
+{
+	console.log("{{cdate}}T{{ctime}}") ;
+var resource = {
+  "summary": "Blood Donation camp organised by {{camp_user}}",
+  "location": "{{address}}",
+  "start": {
+    "dateTime":"{{start}}T23:0:00.000+05:30" //"2013-11-23T23:0:00.000+05:30"
+  },
+  "end": {
+    "dateTime": "{{end}}T23:0:00.000+05:30"
+  }
+};
+var request = gapi.client.calendar.events.insert({
+  'calendarId': 'primary',
+  'resource': resource
+});
+request.execute(function(resp) {
+  console.log(resp);
+});
+}
+
+    </script>
+    <script type="text/javascript" src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
+
+
+	<link href="/css/style.css" rel="stylesheet" type="text/css" media="all" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<!--light box-->
+
+
+	<script type="text/javascript">
+		$(function() {
+			$('.gallery a').lightBox();
+		});
+   </script>
+
+   <script type="text/javascript">
+		jQuery(document).ready(function($) {
+			$(".scroll").click(function(event){		
+				event.preventDefault();
+				$('html,body').animate({scrollTop:$(this.hash).offset().top},1200);
+			});
+		});
+	</script>
+    <link href="/css/bootstrap12.css" rel="stylesheet">
+<script type='text/javascript' src='http://code.jquery.com/jquery-1.8.3.js'></script>
+
+	  
+	  
+	
+    <!-- Bootstrap core CSS -->
+
+
+    <!-- Custom styles for this template -->
+</head>
+<!-- NAVBAR
+================================================== -->
+  <body>
+    <div class="header1">	
+    <div class="header-top1">
+       <div class="wrap"> 
+	         <div class="logo">
+				<!--<a href="index.html"><img src="images/logo.png" alt=""/></a>-->
+				<span style="border: 0 none;
+    margin: 0;
+    padding: 0;
+    vertical-align: baseline;">
+				<a style="color: #FFFFFF;
+    font-family: 'Open Sans',sans-serif;
+    font-size: 3em;text-decoration: none;border: 0 none;
+
+    margin: 0;
+    padding: 0;
+    vertical-align: baseline;" href="/index"><br/>Blood Connect</a></span>
+			 </div>
+			 <div class="cssmenu">
+				<ul id="nav">
+					 <li><a href="/pinfo">Donate</a></li>
+					 <li><a href="/prinfo">Recieve</a></li>
+					 <li><a href="/organise">Blood Camps</a></li>
+					 <li><a href="/share">Share Experience</a></li>
+					 <li class="active"><a href="/about">About</a></li>
+					<li><a href="/contact">Contact</a></li>
+					<li><div id='userbar' class='btn-group input-prepend input-append'>
+
+				<button id='notices' style="postion:relative;top:10px;"class='btn' rel='tooltip' data-placement='bottom' data-original-title='Notifications'> <i class='icon-exclamation-sign icon-large'> <span class='badge badge-important'>102</span></i> </button>
+
+			
+
+			</div></li>
+				     &nbsp;&nbsp;   &nbsp;&nbsp;   &nbsp;&nbsp;   &nbsp;&nbsp;   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				</ul>
+		    </div>
+		    <div class="clear"></div>
+	   </div>
+	 </div>
+   </div>
+   <br/>
+	<br/>
+	<br/>
+<br/><br/>
+<div class="main" id="container">
+	   <div class="content-top section" id="section-2">
+	       <div class="wrap">
+		
+<h1>Add The Camp Event To Your Google Calender</h1>
+<table>
+<tr>
+<td>
+<input type="button" id="authorizeButton" style="display: none" value="Authorize" class="btn btn-danger" />
+</td>
+<td>
+our app to access your calender first
+</td>
+</tr>
+</table>
+<br/>
+<br/>
+
+<input type="button" id="create_event" value="Create Blood camp event in Google Calendar" class="btn btn-primary" onclick="item();"/>
+<br/><br/>    
+</div>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+application: gcdc2013-firstblaid
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: true
+
+handlers:
+- url: twilio-demo/css
+  static_dir: css
+- url: twilio-demo/js
+  static_dir: js
+- url: twilio-demo/images
+  static_dir: images
+- url: twilio-demo/img
+  static_dir: img
+- url: twilio-demo/fonts
+  static_dir: fonts
+- url: twilio-demo/less
+  static_dir: less
+- url: twilio-demo/.* 
+  script: blood.application
+
+
+libraries:
+- name: webapp2
+  version: latest
+- name: jinja2
+  version: latest
+- name: markupsafe
+  version: latest
+
+builtins:
+- remote_api: on
